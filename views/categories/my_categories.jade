@@ -1,0 +1,11 @@
+h1 My Categories!
+  - each cat in categories
+    h3= cat.name
+    a(href='/category/my_categories/'+cat.id)!="View/Edit Category"
+    br
+    a(href='/category/delete/'+cat.id)!="Delete Category"
+    p **
+  p ---
+  a(href='/category/new')!="New Category!"
+  br
+  a(href='/dashboard')!="Back to the dashboard"

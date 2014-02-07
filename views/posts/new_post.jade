@@ -1,0 +1,13 @@
+h1 New Post
+div.signup
+  form(method="post")
+    div
+      div
+        span.label Title:
+        input(type="text", name="title", id="editTitle")
+      div
+        span.label Content:
+        textarea(name="content", id="editContent")
+      div#editPostSubmit
+        input(type="submit", value="post it!")
+    a(href="/dashboard")!= "Back to dashboard"

@@ -1,0 +1,12 @@
+h1 My Posts!
+  - each post in posts
+    h3= post.title
+    p!= post.content
+    a(href='/post/my_posts/'+post.id)!="View/Edit Post"
+    br
+    a(href='/post/delete/'+post.id)!="Delete Post"
+    p **
+  p ---
+  a(href='/post/new')!="New Post!"
+  br
+  a(href='/dashboard')!="Back to the dashboard"

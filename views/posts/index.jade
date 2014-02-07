@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  section.main-content
+    div.last-posts
+      - each post in posts
+        div.post-home
+          h3= post.title
+          p.post-date= moment(post.created).fromNow()
+          p!= post.content
+          hr
+    aside.sidebar
+      ul
+        li Categoria
+        li Categoria
+        li Categoria
+        li Categoria

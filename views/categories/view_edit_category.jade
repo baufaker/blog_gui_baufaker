@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  div.signup
+    form(method="post")
+      div
+        div
+          span.label Name:
+          input(type="text", name="name", id="editName", value=category.name)
+        div
+        div#editCategorySubmit
+          input(type="submit", value="Update category")
+      a(href="/category/my_categories")!= "Back to my categories"

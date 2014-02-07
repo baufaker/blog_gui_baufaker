@@ -1,0 +1,10 @@
+h1 New Category
+div.signup
+  form(method="post")
+    div
+      div
+        span.label Title:
+        input(type="text", name="name", id="editTitle")
+      div#editCategorySubmit
+        input(type="submit", value="create it!")
+    a(href="/dashboard")!= "Back to dashboard"

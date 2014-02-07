@@ -1,0 +1,105 @@
+/* For recent browsers*/
+.clearfix:before,
+.clearfix:after {
+    content:"";
+    display:table;
+}
+.clearfix:after {
+    clear:both;
+}
+/* Triggers "haslayout" for IE6/7 */
+.clearfix {
+    zoom:1;
+}
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.wrapper {
+	width: 100%;
+	max-width: 960px;
+	margin: 10px auto;
+	/*background: #fee;*/
+}
+
+.header {
+	width: 100%;
+}
+
+.header h1 {
+	font: 70px verdana, sans-serif;
+	text-align: center;
+}
+
+.header h2 {
+	font: 20px verdana, sans-serif;
+	text-align: center;
+}
+
+.header nav {
+	background: #ccc;
+}
+
+.header nav ul{
+	list-style-type: none;
+	width: 80%;
+	margin-left: 20%;
+}
+
+.header nav ul li{
+	display: inline;
+	float: left;
+	width: 20%;
+}
+
+.header a {
+	text-decoration: none;
+	color: #00B7FF;
+	margin-left: 42%;
+}
+
+.title-header {
+	margin-bottom: 60px;
+}
+
+.last-posts {
+	width: 60%;
+	margin-left: 10%;
+	float: left;
+}
+
+.last-posts:first-child {
+	margin-top:20px;
+}
+
+.last-posts hr {
+	width: 75%;
+	float: left;
+}
+
+.post-home {
+	float: left;
+	width: 75%;
+	margin-left:20%;
+}
+
+.post-date {
+	font: 70% helvetica;
+	margin-left: 0.5%;
+	color: #ccc999;
+	margin-top: -14px;
+}
+
+.sidebar {
+	float: right;
+	width: 20%;
+}
+
+footer div {
+	margin-top:100px;
+	float: left;
+	width: 100%;
+	text-align: center;
+}
