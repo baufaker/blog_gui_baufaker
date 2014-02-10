@@ -16,6 +16,18 @@ block content
         div
           span.label Content:
           textarea(name="content", id="editContent")
+        h3 Categorias do Post
+        div
+          - categories.forEach(function(category) {
+            - var check = false
+            - post.categories.forEach(function(id) {
+              - if(id.equals(category._id)) {
+                - check = true
+              - }
+            - });
+            input(type="checkbox", name="categories", checked=check, value=category._id)
+            =category.name
+          - });
         div#editUserSubmit
           input(type="submit", value="Update post")
       a(href="/post/my_posts")!= "Back to my posts"

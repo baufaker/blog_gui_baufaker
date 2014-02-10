@@ -8,6 +8,12 @@ div.signup
       div
         span.label Content:
         textarea(name="content", id="editContent")
+      br
+      h3 Categorias do Post
+      div
+         -each cat in categories
+           input(type="checkbox", name="categories", checked=check, value=cat.id)
+           =cat.name
       div#editPostSubmit
         input(type="submit", value="post it!")
     a(href="/dashboard")!= "Back to dashboard"

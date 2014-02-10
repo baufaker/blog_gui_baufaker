@@ -15,7 +15,7 @@ module.exports.controller = function(app){
 			}else{
 				res.render('posts/index', {
 					title: "Gui Baufaker",
-					posts: posts,
+					posts: posts.sort({created:1}),
 					moment: moment
 				});
 			}
@@ -28,7 +28,6 @@ module.exports.controller = function(app){
 				if(err){
 					res.send('erro ao achar as categorias para inserir no seu post');
 				}else{
-					console.log(categories);
 					res.render('posts/new_post', {
 						categories: categories
 					});
@@ -42,6 +41,7 @@ module.exports.controller = function(app){
 	app.post('/post/new', function(req, res){
 		Post.savePost(req.param('title'),
 		req.param('content'),
+		req.param('categories'),
 		req.session.admin_id,
 		function(err){
 			if(err){
@@ -59,7 +59,7 @@ module.exports.controller = function(app){
 					res.send('Erro ao tentar buscar os seus posts');
 				}else{
 					res.render('posts/my_posts',{
-						posts: posts
+						posts: posts.sort({created:-1})
 					})
 				}
 			});
@@ -75,23 +75,35 @@ module.exports.controller = function(app){
 					//o certo aqui é renderizar uma view com a mensagem abaixo
 					res.send('Erro ao tentar achar o seu post');
 				}else{
-					res.render('posts/view_edit_post', {
-						title: 'Edit your post',
-						post: post
+					Category.findAll(function(err, categories){
+						if(err){
+							res.send('erro ao achar as categorias para inserir no seu post');
+						}else{
+							res.render('posts/view_edit_post', {
+								title: 'Edit your post',
+								post: post,
+								categories: categories
+							});
+						}
 					});
 				}
 			});
 		}else{
-			res.render('users/not_authorized');
+			res.redirect('/');
 		}
 	});
 	
 	app.post('/post/my_posts/:id', function(req, res){
 		Post.updatePost(req.param('title'),
 		req.param('content'),
+		req.param('categories'),
 		req.params.id,
-		function(err, docs){
-			res.redirect('/post/my_posts');
+		function(err, post){
+			if(err){
+				res.send('Erro ao fazer update no seu post');
+			}else{
+				res.redirect('/post/my_posts');
+			}
 		});
 	});
 	

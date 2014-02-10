@@ -3,18 +3,20 @@ var Schema = mongoose.Schema;
 var postSchema = new Schema({
 	title: String,
 	content: String,
-	category: [{type: Schema.Types.ObjectId, ref: 'category'}],
+	categories: [{type: Schema.Types.ObjectId, ref: 'category'}],
 	created: { type: Date, default: Date.now },
 	admin: {type: Schema.Types.ObjectId, ref: 'admin'}
 });
 
 Post = mongoose.model('post', postSchema);
 
+var Category = require('../models/category').Category;
+
 //funções de CRUD
 
-Post.savePost = function (title, content, admin_id, callback){
+Post.savePost = function (title, content, categories, admin_id, callback){
 	content = content.replace(/\r?\n/g, '<br />');
-	new Post({title:title, content: content, admin:admin_id}).save(function(err, post){
+	new Post({title:title, content: content, categories: categories, admin:admin_id}).save(function(err, post){
 		if(err){
 			callback(err);
 		}else{
@@ -23,16 +25,39 @@ Post.savePost = function (title, content, admin_id, callback){
 	});
 }
 
-Post.updatePost = function (title, content, id, callback){
+Post.updatePost = function (title, content, categories, id, callback){
 	content = content.replace(/\r?\n/g, '<br />');
 	Post.findById(id, function(err, post){
 		if(err){
 			callback(err);
 		}else{
+			// if(categories instanceof Array){
+	// 			var cat = [];
+	// 			categories.forEach(function(category){
+	// 				cat.push(mongoose.Types.ObjectId(category));
+	// 			});
+	// 			post.categories = cat;
+	// 		}else if(categories){
+	// 			post.categories = mongoose.Types.ObjectId(categories);
+	// 		}else{
+	// 			post.categories = [];
+	// 		}
+			// var PostAux = new Post({categories: categories});
+			// console.log(PostAux.categories);
+			// post.categories = PostAux.categories;
+			if(!categories){
+				categories = [];
+			}
 			post.content = content;
 			post.title = title;
 			post.__v += 1;
-			post.save(callback(null, post));
+			post.update({$set:{"categories":categories}},function(err, post){
+				if(err){
+					callback(err);
+				}else{
+					callback(null, post);
+				}
+			});
 		}
 	});
 }
