@@ -12,7 +12,20 @@ var http = require('http');
 var path = require('path');
 var fs = require('fs');
 
-var app = express();
+var app = express(),
+    mailer = require('express-mailer');
+
+mailer.extend(app, {
+  from: 'blog@baufaker.com',
+  host: 'smtp.gmail.com', // hostname
+  secureConnection: true, // use SSL
+  port: 465, // port for secure SMTP
+  transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
+  auth: {
+    user: 'baufaker@gmail.com',
+    pass: 'vamosemboraparabogota'
+  }
+});
 
 //habilitando sessions
 app.use(express.cookieParser());

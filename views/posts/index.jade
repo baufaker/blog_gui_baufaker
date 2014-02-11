@@ -5,13 +5,19 @@ block content
     div.last-posts
       - each post in posts
         div.post-home
-          h3= post.title
+          h2
+            a.post-title(href="/posts/"+post.id)!=post.title
+          div.post-categories
+            -var array = []
+            -each id in post.categories
+              -each categoria in categorias
+                -if(id.equals(categoria._id))
+                  =categoria.name+'.  '
           p.post-date= moment(post.created).fromNow()
           p!= post.content
           hr
     aside.sidebar
-      ul
-        li Categoria
-        li Categoria
-        li Categoria
-        li Categoria
+      h3#categories-title-home Categorias
+      ul.category-list-home
+        - each categoria in categorias
+          li= categoria.name

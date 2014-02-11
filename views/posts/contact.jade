@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 Entre em Contato
+  form(method="post")
+    div
+      div
+        span.label Assunto:
+        input(type="text", name="subject", id="editTitle")
+      div
+        span.label Mensagem:
+        textarea(name="content", id="editContent")
+      br
+      div#editPostSubmit
+        input(type="submit", value="post it!")

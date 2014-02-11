@@ -14,14 +14,18 @@ OK função de editar categorias;
 OK função de deletar categorias;
 OK adicionar categorias a cada post criado;
 OK adicionar categorias a cada post editado;
-- Mostrar categorias na página de editar post;
-- Mostrar categorias na home;
-- inserir comentários nos posts;
+OK Mostrar categorias na página de editar post;
+OK Mostrar categorias na home;
+OK Mostrar categorias embaixo do nome do post;
+OK Página de leitura de cada post;
+OK inserir comentários nos posts;
+OK frontend home page com 1 mediaquery;
+OK frontend da página de "sobre" com um media query;
+OK frontend da página de post com media queries;
 - fazer deploy para o heroku com mongolab e redis;
-- limitar posts que são mostrados na homepage com plugin de "ver mais";
-- frontend home page;
 
 /*********************/
 
 OK [BUG] Editar post não funciona se o post tiver quebra de linhas;
 OK [BUg] O post não está sendo renderizado com a formatação que foi criado. Tudo está sendo renderizado em uma linha;
+- [BUG] Arrumar a ordenação dos posts, que não está funcionando

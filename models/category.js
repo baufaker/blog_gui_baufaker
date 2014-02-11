@@ -48,4 +48,14 @@ Category.deleteCategory = function (cat_id, callback){
 	});
 }
 
+Category.findNameById = function(id){
+	Category.findById(id, function(err, cat){
+		if(err){
+			return undefined;
+		}else{
+			return cat.name;
+		}
+	});
+}
+
 module.exports.Category = Category;

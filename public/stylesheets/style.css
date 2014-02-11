@@ -40,12 +40,17 @@ body {
 
 .header nav {
 	background: #ccc;
+	height: auto;
 }
 
 .header nav ul{
 	list-style-type: none;
 	width: 80%;
 	margin-left: 20%;
+}
+
+a#pull {
+	display: none;
 }
 
 .header nav ul li{
@@ -56,8 +61,24 @@ body {
 
 .header a {
 	text-decoration: none;
-	color: #00B7FF;
+	color: #5490B0;
 	margin-left: 42%;
+}
+
+.post-reader {
+	width: 60%;
+	float: left;
+	margin-left: 20%;
+}
+
+a.post-title {
+	text-decoration: none;
+	color: #000;
+}
+
+a.post-title:hover {
+	color: #48A7E5;
+	text-decoration:underline;
 }
 
 .title-header {
@@ -66,7 +87,7 @@ body {
 
 .last-posts {
 	width: 60%;
-	margin-left: 10%;
+	/*margin-left: 10%;*/
 	float: left;
 }
 
@@ -92,9 +113,18 @@ body {
 	margin-top: -14px;
 }
 
+.post-categories {
+	margin-top: -14px;
+	margin-bottom: 21px;
+	font-size: 90%;
+	color: #1cc;
+}
+
 .sidebar {
-	float: right;
+	float: left;
 	width: 20%;
+	margin-left: 12%;
+	margin-top: 22px;
 }
 
 footer div {
@@ -102,4 +132,87 @@ footer div {
 	float: left;
 	width: 100%;
 	text-align: center;
+}
+
+.fb-comments{
+	margin-left: 15%;
+}
+
+#categories-title-home {
+	margin-left: 23px;
+}
+
+/*Media Queries*/
+
+@media only screen and (max-width: 800px){
+	div.last-posts {
+		width:100%;
+		margin-left: -8%;
+	}
+	
+	#categories-title-home {
+		font-size: 195%;
+		margin-left: 100%;
+	}
+	
+	.category-list-home {
+		margin-left: 65%;
+		list-style: none;
+		font-size: 130%;
+		line-height: 2;
+		width: 150%;
+	}
+	
+	.last-posts hr {
+		width:100%;
+	}
+	
+	a#pull {
+		display: block;
+		/*background-color: #283744;*/
+		width: 100%;
+		position: relative;
+		text-align: center;
+		height: 45px;
+		margin-left: -0.5px;
+		font-size: 160%;
+		top: 10px;
+	}
+	
+	nav a#pull:after {
+		content: "";
+		background: url('../images/menu-icon.png') no-repeat;
+		width: 45px;
+		height: 45px;
+		display: inline-block;
+		position: absolute;
+		right: 15px;
+		top: 4px;
+	}
+	
+	nav ul  {
+		display:none;
+	}
+	
+	.header nav ul li{
+		display: block;
+		float: none;
+		width: 100%;
+		margin-left: -75px;
+		height: 45px;
+	}
+	
+	nav li a {
+		border-bottom: 1px solid #576979;
+	}
+	
+	.post-reader {
+	width: 70%;
+	margin-left: 15%;
+	}
+	
+	.fb-comments {
+	margin-left: 12%;
+	}
+
 }

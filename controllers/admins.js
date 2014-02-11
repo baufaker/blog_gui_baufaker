@@ -51,4 +51,5 @@ module.exports.controller = function(app){
 		req.session.destroy();
 		res.redirect('/');
 	});
+	
 }
