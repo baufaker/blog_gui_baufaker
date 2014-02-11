@@ -22,7 +22,7 @@ OK inserir comentários nos posts;
 OK frontend home page com 1 mediaquery;
 OK frontend da página de "sobre" com um media query;
 OK frontend da página de post com media queries;
-- fazer deploy para o heroku com mongolab e redis;
+DO fazer deploy para o heroku com mongolab e redis;
 
 /*********************/
 

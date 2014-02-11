@@ -5,12 +5,18 @@
 
 var express = require('express');
 //lembrar de iniciar o redis-server para que as sessions funcionem
-var RedisStore = require('connect-redis')(express);
+//abaixo, usando redis no localhost 
+// var RedisStore = require('connect-redis')(express);
 var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var fs = require('fs');
+var mongo = require('mongodb');
+
+// Usando Redis para o Heroku
+var redis = require('redis-url').connect(process.env.REDISTOGO_URL);
+
 
 var app = express(),
     mailer = require('express-mailer');
@@ -31,7 +37,7 @@ mailer.extend(app, {
 app.use(express.cookieParser());
 app.use(express.session({
 	secret: '1234567890QWERTY',
-	store: new RedisStore
+	store: new redis
 }));
 
 // all environments
@@ -46,10 +52,17 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
+/*Mongo para Heroku*/
+var mongoUri = process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost:3000/Blog_Gui';
+
 var mongoose = require('mongoose');
 
 //inicia uma requisição de conexão do servidor
-mongoose.connect('mongodb://localhost/Blog_Gui');
+mongo.MongoClient.connect(mongoUri, { server: { auto_reconnect: true } }, function (err, db) {
+    /* adventure! */
+});
 
 // development only
 if ('development' == app.get('env')) {
